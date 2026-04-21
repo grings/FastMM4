@@ -248,8 +248,16 @@ begin
       end;
       //Calculate first 4 minimum average for RemoveLink rutine
       obsTaskPopLoops := GetMinAndClear(0, 4) div 4;
+      if obsTaskPopLoops < 1 then
+        obsTaskPopLoops := 1
+      else if obsTaskPopLoops > 10000 then
+        obsTaskPopLoops := 10000;
       //Calculate first 4 minimum average for InsertLink rutine
       obsTaskPushLoops := GetMinAndClear(1, 4) div 4;
+      if obsTaskPushLoops < 1 then
+        obsTaskPushLoops := 1
+      else if obsTaskPushLoops > 10000 then
+        obsTaskPushLoops := 10000;
 
       //This gives better performance (determined experimentally)
       obsTaskPopLoops := obsTaskPopLoops * 2;
